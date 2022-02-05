@@ -1,7 +1,5 @@
 from webbrowser import Chrome
-from pandas import options
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -24,11 +22,7 @@ class extract(object):
     
     def browser(self):
 
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-
-        
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome()
         driver.maximize_window()
 
         driver.get(self.url)
@@ -69,7 +63,9 @@ class extract(object):
         download_btn = driver.find_element(By.LINK_TEXT, 'Arquivo CSV')
         download_btn.click()
 
-        sleep(3)
+        sleep(1)
+        print('Arquivo baixado!')
+
     
     def data_cleaning(self):
         # Data refactoring

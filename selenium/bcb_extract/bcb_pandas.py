@@ -2,7 +2,7 @@ import pandas as pd
 import os, glob
 
 
-def data_cleaning(file, save_local=0, file_name=0, month_name=0):
+def data_cleaning(file, save_local, file_name, month_name):
 
     # DataFrame Refactoring
     df = pd.read_csv(file, encoding='ISO=8859-1', sep=';', decimal=',')
