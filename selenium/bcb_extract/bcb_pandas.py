@@ -32,5 +32,5 @@ def data_cleaning(file, save_local=0, file_name=0, month_name=0):
     # Removing duplicated values
     df['Captação mensal acumulada - mil'] = df['Captação mensal acumulada - mil'].mask(df.duplicated(['Captação mensal acumulada - mil']))
 
-    print('Tratamento realizado com sucesso!')
+    print('Tratamento realizado com sucesso!!!')
     return df.to_csv(f'{save_local}{file_name}{month_name}.csv', index=False, encoding='utf-8-sig', sep=';', decimal=',')

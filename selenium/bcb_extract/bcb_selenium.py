@@ -82,7 +82,7 @@ class extract(object):
 
         bcb_pandas.data_cleaning(file=last_file, save_local=save_local, file_name=file_name, month_name=month_name)
 
-        print('Finalizado!')
+        print('Finalizado!!!')
 
 
 starting = extract()
