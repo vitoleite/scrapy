@@ -21,6 +21,12 @@ class extract(object):
         self.data_fim = self.last_day_prev_month.strftime('%d%m%Y')
     
     def browser(self):
+        """
+        Processo feito para extrair as informações da Poupança.
+        - Abrir o navegador
+        - Realizar os comandos necessários de navegação
+        - Baixar o arquivo
+        """
 
         driver = webdriver.Chrome()
         driver.maximize_window()
@@ -68,6 +74,9 @@ class extract(object):
 
     
     def data_cleaning(self):
+        """
+        Limpando os dados utilizando a biblioteca local criada para isso.
+        """
         # Data refactoring
 
         last_file = max(glob.iglob("C:\\Users\\vitoo\Downloads\\*.csv"), key=os.path.getctime)

@@ -3,6 +3,18 @@ import os, glob
 
 
 def data_cleaning(file, save_local, file_name, month_name):
+    """
+    Efetuando a limpeza dos dados para a utilização final.
+
+    Args:
+        file ([file_path]): Local do arquivo a ser formatado.
+        save_local ([str]): Local onde o arquivo deverá ser salvo.
+        file_name ([str]): Nome do arquivo.
+        month_name ([str]): Apenas adicionando o formato de 'Mês/Ano' no arquivo para distinguir arquivos por data.
+
+    Returns:
+        Salva o arquivo no local de acordo com os parâmetros estabelecidos na função.
+    """
 
     # DataFrame Refactoring
     df = pd.read_csv(file, encoding='ISO=8859-1', sep=';', decimal=',')
