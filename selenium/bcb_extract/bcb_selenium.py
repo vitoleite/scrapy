@@ -1,4 +1,7 @@
+from webbrowser import Chrome
+from pandas import options
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -20,8 +23,12 @@ class extract(object):
         self.data_fim = self.last_day_prev_month.strftime('%d%m%Y')
     
     def browser(self):
+
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+
         
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(chrome_options=chrome_options)
         driver.maximize_window()
 
         driver.get(self.url)
@@ -68,9 +75,9 @@ class extract(object):
         # Data refactoring
 
         last_file = max(glob.iglob("C:\\Users\\vitoo\Downloads\\*.csv"), key=os.path.getctime)
-        save_local = 'selenium\\bcb extract\\data\\'
+        save_local = 'selenium\\bcb_extract\\data\\'
 
-        file_name = 'dados_poupança_'
+        file_name = 'dados_poupanca_'
         month_name = self.first_day_prev_month.date().strftime("%b%y")
 
         bcb_pandas.data_cleaning(file=last_file, save_local=save_local, file_name=file_name, month_name=month_name)
