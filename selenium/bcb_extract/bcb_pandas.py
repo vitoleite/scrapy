@@ -2,10 +2,10 @@ import pandas as pd
 import os, glob
 
 
-def data_cleaning(file, save_local, file_name, month_name):
+def data_cleaning(file, save_local=0, file_name=0, month_name=0):
 
     # DataFrame Refactoring
-    df = pd.read_csv(file, encoding='ISO=8859-1', sep=';')
+    df = pd.read_csv(file, encoding='ISO=8859-1', sep=';', decimal=',')
 
     colunas = {
         'Data': 'Data',
@@ -20,7 +20,10 @@ def data_cleaning(file, save_local, file_name, month_name):
     # Refactoring the data values
     df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'].str.replace(',', '')
     df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'].str.replace(r'.', '')
-    df['Captação diária de poupança - mil'] = pd.to_numeric(df['Captação diária de poupança - mil'])
+    df['Captação diária de poupança - mil'] = pd.to_numeric(df['Captação diária de poupança - mil'], errors='ignore')
+
+    # Divide values cause formatting is stucking to identifying right values
+    df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'] / 100
 
     # Obtaining the sum of all values
     total = df['Captação diária de poupança - mil'].sum()
@@ -30,4 +33,4 @@ def data_cleaning(file, save_local, file_name, month_name):
     df['Captação mensal acumulada - mil'] = df['Captação mensal acumulada - mil'].mask(df.duplicated(['Captação mensal acumulada - mil']))
 
     print('Tratamento realizado com sucesso!')
-    return df.to_csv(f'{save_local}{file_name}{month_name}.csv', index=False, encoding='utf-8-sig', decimal=',', sep=';')
+    return df.to_csv(f'{save_local}{file_name}{month_name}.csv', index=False, encoding='utf-8-sig', sep=';', decimal=',')
