@@ -1,8 +1,7 @@
 import pandas as pd
-import os, glob
 
 
-def data_cleaning(file, save_local, file_name, month_name):
+def formatting(file, file_name, month_name, save_local):
     """
     Efetuando a limpeza dos dados para a utilização final.
 
