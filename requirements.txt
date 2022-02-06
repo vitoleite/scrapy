@@ -1,0 +1,8 @@
+-- Libs used in this project
+Selenium
+OS
+Pandas
+Glob
+datetime
+dateutil
+time
