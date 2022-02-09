@@ -29,8 +29,8 @@ def formatting(file, file_name, month_name, save_local):
     df = df[:-1]
 
     # Refactoring the data values
-    df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'].str.replace(',', '')
-    df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'].str.replace(r'.', '')
+    df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'].str.replace(',', '', regex=True)
+    df['Captação diária de poupança - mil'] = df['Captação diária de poupança - mil'].str.replace('\.', '', regex=True)
     df['Captação diária de poupança - mil'] = pd.to_numeric(df['Captação diária de poupança - mil'], errors='ignore')
 
     # Divide values cause formatting is stucking to identifying right values
