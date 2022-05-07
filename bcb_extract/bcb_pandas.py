@@ -1,7 +1,8 @@
 import pandas as pd
+from pandas import DataFrame
 
 
-def formatting(file, file_name, month_name, save_local):
+def formatting(file : str, file_name : str, month_name : str, save_local : str):
     """
     Efetuando a limpeza dos dados para a utilização final.
 
@@ -16,9 +17,9 @@ def formatting(file, file_name, month_name, save_local):
     """
 
     # DataFrame Refactoring
-    df = pd.read_csv(file, encoding='ISO=8859-1', sep=';', decimal=',')
+    df : DataFrame = pd.read_csv(file, encoding='ISO=8859-1', sep=';', decimal=',')
 
-    colunas = {
+    colunas : dict[str, str] = {
         'Data': 'Data',
         '24 - Captação líquida diária de depósitos de poupança - SBPE e rural - u.m.c. (mil)': 'Captação diária de poupança - mil'
         }
