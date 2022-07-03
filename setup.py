@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="bcb_web_scrapy",
-    version="0.0.4",
+    version="0.0.5",
     author="vitor_leite",
     author_email="vitorleite5@outlook.com",
     description="Project focused to learn web scrape",
