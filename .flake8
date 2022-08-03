@@ -1,0 +1,4 @@
+[flake8]
+max-line-length = 135
+ignore = F401, W605
+exclude = .git,__pycache__,docs/source/conf.py,build,dist,.tox
